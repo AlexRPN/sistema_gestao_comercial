@@ -1,38 +1,28 @@
 from domain.entities.cliente.clientes import Cliente
+from domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
 from datetime import datetime
 from src.domain.utils.ativo_inativo_enum import Situacao
 
 class Enderecos:
-    def __init__(self, id: int,
-                       cliente: Cliente,
-                       numero: int,
-                       logradouro: str,
-                       complemento: str,
-                       cep: str,
-                       bairro: str,
-                       cidade: str,
-                       estado: str,
-                       data_criacao: datetime,
-                       data_atualizacao: datetime = None,
-                       situacao: Situacao = Situacao.ATIVO):
-        self.id = id
-        self.cliente = cliente
-        self.numero = numero
-        self.logradouro = logradouro
-        self.complemento = complemento
-        self.cep = cep
-        self.bairro = bairro
-        self.cidade = cidade
-        self.estado = estado
-        self.data_criacao = data_criacao
-        self.data_atualizacao = data_atualizacao or datetime.now()
-        self.situacao = situacao
+    def __init__(self, InserirEnderecoComando: InserirEnderecoComando):
+        self.id = InserirEnderecoComando.id
+        self.id_cliente = InserirEnderecoComando.id_cliente
+        self.numero = InserirEnderecoComando.numero
+        self.logradouro = InserirEnderecoComando.logradouro
+        self.complemento = InserirEnderecoComando.complemento
+        self.cep = InserirEnderecoComando.cep
+        self.bairro = InserirEnderecoComando.bairro
+        self.cidade = InserirEnderecoComando.cidade
+        self.estado = InserirEnderecoComando.estado
+        self.data_criacao = InserirEnderecoComando.data_criacao or datetime.now()
+        self.data_atualizacao = InserirEnderecoComando.data_atualizacao 
+        self.situacao = InserirEnderecoComando.situacao
 
     def setSituacao(self, situacao: Situacao):
         self.situacao = situacao
 
-    def setCliente(self, cliente: Cliente):
-        self.cliente = cliente
+    def setIdCliente(self, id_cliente: int):
+        self.id_cliente = id_cliente
 
     def setNumero(self, numero: int):
         self.numero = numero

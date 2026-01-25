@@ -1,19 +1,15 @@
 from datetime import datetime
 from src.domain.utils.ativo_inativo_enum import Situacao
+from src.domain.command.clientes.inserir_cliente_comando import InserirClienteComando
 
 class Cliente:
-    def __init__(self, id: int, 
-                       nome: str, 
-                       telefone: str, 
-                       data_criacao: datetime, 
-                       data_atualizacao: datetime, 
-                       situacao: Situacao = Situacao.ATIVO):
-        self.id = id
-        self.nome = nome
-        self.telefone = telefone
-        self.data_criacao = data_criacao or datetime.now()
-        self.data_atualizacao = data_atualizacao 
-        self.situacao = situacao
+    def __init__(self, comando: InserirClienteComando):
+        self.id = comando.id
+        self.nome = comando.nome
+        self.telefone = comando.telefone
+        self.data_criacao = comando.data_criacao or datetime.now()
+        self.data_atualizacao = comando.data_atualizacao 
+        self.situacao = comando.situacao
         
     def setSituacao(self, situacao: Situacao):
         if not isinstance(situacao, Situacao):
@@ -35,8 +31,3 @@ class Cliente:
 
     def setDataAtualizacao(self, data_atualizacao: datetime):
         self.data_atualizacao = data_atualizacao
-
-    def setSituacao(self, situacao: bool):
-        self.situacao = situacao
-
-        
