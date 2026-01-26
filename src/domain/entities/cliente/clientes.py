@@ -7,6 +7,7 @@ class Cliente:
         self.id = comando.id
         self.nome = comando.nome
         self.telefone = comando.telefone
+        self.email = comando.email
         self.data_criacao = comando.data_criacao or datetime.now()
         self.data_atualizacao = comando.data_atualizacao 
         self.situacao = comando.situacao
@@ -31,3 +32,8 @@ class Cliente:
 
     def setDataAtualizacao(self, data_atualizacao: datetime):
         self.data_atualizacao = data_atualizacao
+
+    def setEmail(self, email: str):
+        if not email or "@" not in email:
+            raise ValueError("Email inválido.")
+        self.email = email

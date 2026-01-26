@@ -1,5 +1,5 @@
-from domain.repositories.clientes.interface.cliente_repositorio_interface import ClienteRepositorioInterface
-from domain.services.clientes.interface.cliente_servico_interface import ClienteServicoInterface
+from src.domain.repositories.clientes.interface.cliente_repositorio_interface import ClienteRepositorioInterface
+from src.domain.services.clientes.interface.cliente_servico_interface import ClienteServicoInterface
 from src.domain.command.clientes.inserir_cliente_comando import InserirClienteComando
 from tkinter import messagebox
 

@@ -1,5 +1,5 @@
-from infrastructure.database.migrations.sistema_gestao_comercial_bd import SistemaGestaoComercialBD
-from domain.repositories.enderecos.interface.endereco_repositorio_interface import EnderecoRepositorioInterface
+from src.infrastructure.database.migrations.sistema_gestao_comercial_bd import SistemaGestaoComercialBD
+from src.domain.repositories.enderecos.interface.endereco_repositorio_interface import EnderecoRepositorioInterface
 from src.domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
 from tkinter import messagebox
 
@@ -10,20 +10,23 @@ class EnderecoRepositorio(EnderecoRepositorioInterface):
     def cadastrar_endereco(self, comando: InserirEnderecoComando):
         query = '''
                     INSERT INTO endereco (
-                        id_cliente, logradouro, numero, complemento, cep, bairro, cidade, estado
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                ''', (comando.id_cliente, 
-                      comando.logradouro, 
-                      comando.numero, 
-                      comando.complemento, 
-                      comando.cep, 
-                      comando.bairro, 
-                      comando.cidade, 
-                      comando.estado)
+                        id_cliente, logradouro, numero, complemento, cep, bairro, cidade, estado, data_criacao, situacao
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                '''
+        params = (comando.id_cliente, 
+                  comando.logradouro, 
+                  comando.numero, 
+                  comando.complemento, 
+                  comando.cep, 
+                  comando.bairro, 
+                  comando.cidade, 
+                  comando.estado,
+                  comando.data_criacao.strftime('%Y-%m-%d %H:%M:%S'),
+                  comando.situacao.value)
         
         try:
             cursor = self.db.connection.cursor()
-            cursor.execute(query)
+            cursor.execute(query, params)
             self.db.connection.commit()
             comando.id = cursor.lastrowid
             messagebox.showinfo("Sucesso", "Endereço cadastrado com sucesso.")

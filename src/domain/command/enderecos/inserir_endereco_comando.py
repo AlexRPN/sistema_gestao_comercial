@@ -1,9 +1,8 @@
 from datetime import datetime
-from domain.utils.ativo_inativo_enum import Situacao
+from src.domain.utils.ativo_inativo_enum import Situacao
 
 class InserirEnderecoComando:
-    def __init__(self, id: int,
-                       id_cliente: int,
+    def __init__(self, id_cliente: int,
                        numero: int,
                        logradouro: str,
                        complemento: str,
@@ -14,7 +13,6 @@ class InserirEnderecoComando:
                        data_criacao: datetime,
                        data_atualizacao: datetime = None,
                        situacao: Situacao = Situacao.ATIVO):
-        self.id = id
         self.id_cliente = id_cliente
         self.numero = numero
         self.logradouro = logradouro
