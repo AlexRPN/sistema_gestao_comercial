@@ -1,5 +1,5 @@
-from domain.entities.cliente.clientes import Cliente
-from domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
+from src.domain.entities.cliente.clientes import Cliente
+from src.domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
 from datetime import datetime
 from src.domain.utils.ativo_inativo_enum import Situacao
 

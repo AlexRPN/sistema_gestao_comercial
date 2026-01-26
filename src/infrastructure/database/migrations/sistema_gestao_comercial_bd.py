@@ -5,7 +5,7 @@ class SistemaGestaoComercialBD:
     def __init__(self):
         self.connection = sqlite3.connect('data/gestao_comercial.db')
         self.cursor = self.connection.cursor()
-        self.create_tables()
+        # create_tables() deve ser chamado manualmente quando necessário
 
     def create_tables(self):
         self.cursor.execute(''' CREATE TABLE IF NOT EXISTS cliente (

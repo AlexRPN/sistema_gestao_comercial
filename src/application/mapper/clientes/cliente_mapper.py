@@ -1,4 +1,6 @@
 from src.domain.command.clientes.inserir_cliente_comando import InserirClienteComando
+from datetime import datetime
+from src.domain.utils.ativo_inativo_enum import Situacao
 
 class ClienteMapper:
     @staticmethod
@@ -6,7 +8,8 @@ class ClienteMapper:
         return InserirClienteComando(
             nome=request.nome,
             telefone=request.telefone,
-            data_criacao=request.data_criacao,
-            data_atualizacao=request.data_atualizacao,
-            situacao=request.situacao
+            email=request.email,
+            data_criacao=datetime.now(),
+            data_atualizacao=None,
+            situacao=Situacao.ATIVO
         )

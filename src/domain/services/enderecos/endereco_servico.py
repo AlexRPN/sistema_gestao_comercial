@@ -1,6 +1,6 @@
-from domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
-from domain.repositories.enderecos.interface.endereco_repositorio_interface import EnderecoRepositorioInterface
-from domain.services.enderecos.interface.endereco_servico_interface import EnderecoServicoInterface
+from src.domain.command.enderecos.inserir_endereco_comando import InserirEnderecoComando
+from src.domain.repositories.enderecos.interface.endereco_repositorio_interface import EnderecoRepositorioInterface
+from src.domain.services.enderecos.interface.endereco_servico_interface import EnderecoServicoInterface
 from tkinter import messagebox
 
 class EnderecoServico(EnderecoServicoInterface):
