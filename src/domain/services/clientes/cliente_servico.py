@@ -4,14 +4,13 @@ from src.domain.command.clientes.inserir_cliente_comando import InserirClienteCo
 from tkinter import messagebox
 
 class ClienteServico(ClienteServicoInterface):
+    CAMPOS_OBRIGATORIOS = "Existem campos obrigatórios não preenchidos. Verifique os dados e tente novamente."
     # Injeção de dependência do repositório de clientes
     def __init__(self, cliente_repositorio: ClienteRepositorioInterface):
         self.cliente_repositorio = cliente_repositorio
 
     def cadastrar_cliente(self, comando: InserirClienteComando):
-        if not comando:
-            messagebox.showerror("Erro", "Comando inválido para cadastro de cliente.")
-            return None
-        
+        # Validação se o cliente já existe no sistema
+                
         return self.cliente_repositorio.cadastrar_cliente(comando)
         

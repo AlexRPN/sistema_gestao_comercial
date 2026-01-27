@@ -149,6 +149,7 @@ class TelaCadastroCliente(ctk.CTkFrame):
 
         if resultado['sucesso']:
             messagebox.showinfo("Sucesso", resultado['mensagem'])
+            self.limpar_campos()
         else:
             messagebox.showerror("Erro", resultado['mensagem_erro'])
 

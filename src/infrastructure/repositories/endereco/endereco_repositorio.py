@@ -29,7 +29,6 @@ class EnderecoRepositorio(EnderecoRepositorioInterface):
             cursor.execute(query, params)
             self.db.connection.commit()
             comando.id = cursor.lastrowid
-            messagebox.showinfo("Sucesso", "Endereço cadastrado com sucesso.")
 
             return comando
         except Exception as ex:
