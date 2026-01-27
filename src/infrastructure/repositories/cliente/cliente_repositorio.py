@@ -19,8 +19,7 @@ class ClienteRepositorio(ClienteRepositorioInterface):
             cursor.execute(query, params)
             self.db.connection.commit()
             comando.id = cursor.lastrowid
-            messagebox.showinfo("Sucesso", "Cliente cadastrado com sucesso.")
-
+            
             return comando
         except Exception as ex:
             messagebox.showerror("Erro", f"Erro ao cadastrar cliente: {ex}")

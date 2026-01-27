@@ -4,11 +4,13 @@ from src.domain.services.enderecos.interface.endereco_servico_interface import E
 from tkinter import messagebox
 
 class EnderecoServico(EnderecoServicoInterface):
+    MENSAGEM_ID_CLIENTE_OBRIGATORIO = "O ID do cliente é obrigatório para cadastrar um endereço."
+
     def __init__(self, endereco_repositorio: EnderecoRepositorioInterface):
         self.endereco_repositorio = endereco_repositorio
 
     def cadastrar_endereco(self, comando: InserirEnderecoComando):
         if comando.id_cliente is None:
-            return messagebox.showerror("Erro", "O ID do cliente é obrigatório para cadastrar um endereço.")
+            return messagebox.showerror("Erro", self.MENSAGEM_ID_CLIENTE_OBRIGATORIO)
 
         return self.endereco_repositorio.cadastrar_endereco(comando)
